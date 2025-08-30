@@ -8,6 +8,7 @@ import time
 import jdatetime
 import requests
 import logging
+import logging.handlers
 from dotenv import load_dotenv
 from config_loader import load_config
 
@@ -17,7 +18,11 @@ load_dotenv()
 # Configure logging
 logging.basicConfig(
     level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.handlers.RotatingFileHandler('bot_logs.log', maxBytes=10*1024*1024, backupCount=5),
+        logging.StreamHandler()
+    ]
 )
 logger = logging.getLogger(__name__)
 

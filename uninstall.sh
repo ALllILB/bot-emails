@@ -12,12 +12,13 @@ SERVICE_USER="emailbot"
 echo "Uninstalling Email Bot Service..."
 
 # Stop and disable services
-sudo systemctl stop email-processor.service whatsapp-bot.service 2>/dev/null || true
-sudo systemctl disable email-processor.service whatsapp-bot.service 2>/dev/null || true
+sudo systemctl stop email-processor.service whatsapp-bot.service log-viewer.service 2>/dev/null || true
+sudo systemctl disable email-processor.service whatsapp-bot.service log-viewer.service 2>/dev/null || true
 
 # Remove systemd service files
 sudo rm -f /etc/systemd/system/email-processor.service
 sudo rm -f /etc/systemd/system/whatsapp-bot.service
+sudo rm -f /etc/systemd/system/log-viewer.service
 
 # Reload systemd
 sudo systemctl daemon-reload

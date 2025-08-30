@@ -64,12 +64,32 @@ RestartSec=10
 WantedBy=multi-user.target
 EOF
 
+sudo tee /etc/systemd/system/log-viewer.service > /dev/null <<EOF
+[Unit]
+Description=Bot Log Viewer Service
+After=network.target
+
+[Service]
+Type=simple
+User=$SERVICE_USER
+WorkingDirectory=$INSTALL_DIR
+Environment=PATH=$INSTALL_DIR/venv/bin
+ExecStart=$INSTALL_DIR/venv/bin/python log_viewer.py
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
 # Reload systemd and enable services
 sudo systemctl daemon-reload
 sudo systemctl enable email-processor.service
 sudo systemctl enable whatsapp-bot.service
+sudo systemctl enable log-viewer.service
 
 echo "Installation completed!"
 echo "Configure your .env file at: $INSTALL_DIR/.env"
-echo "Start services with: sudo systemctl start email-processor whatsapp-bot"
-echo "Check status with: sudo systemctl status email-processor whatsapp-bot"
+echo "Start services with: sudo systemctl start email-processor whatsapp-bot log-viewer"
+echo "Check status with: sudo systemctl status email-processor whatsapp-bot log-viewer"
+echo "View logs at: http://your-server-ip:8223"

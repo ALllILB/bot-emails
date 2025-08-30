@@ -10,7 +10,7 @@ def hello():
 if __name__ == '__main__':
     debug_mode = os.getenv('FLASK_DEBUG', 'False').lower() == 'true'
     app.run(
-        host='127.0.0.1',
-        port=5000,
+        host='0.0.0.0',
+        port=8223,
         debug=debug_mode
     )

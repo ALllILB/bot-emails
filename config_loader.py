@@ -51,8 +51,8 @@ def load_config() -> Dict:
             'AUTHORIZED_USERS': authorized_users,
             'FLASK_CONFIG': {
                 'DEBUG': os.getenv('FLASK_DEBUG', 'False').lower() == 'true',
-                'HOST': os.getenv('FLASK_HOST', '127.0.0.1'),
-                'PORT': int(os.getenv('FLASK_PORT', '5000'))
+                'HOST': os.getenv('FLASK_HOST', '0.0.0.0'),
+                'PORT': int(os.getenv('FLASK_PORT', '8223'))
             }
         }
     
