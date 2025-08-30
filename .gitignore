@@ -1,15 +1,39 @@
 # Python virtual environment
 venv/
+env/
 
 # Python cache files
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
 
 # Environment variables file (SECURITY!)
 .env
+.env.local
+.env.production
 
-# Database file
+# Configuration files with credentials
+config.json
+
+# Database files
 database.db
+*.db
 
 # Generated files
 servers.xlsx
+all_emails_shamsi_date.xlsx
+
+# Logs
+*.log
+logs/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
