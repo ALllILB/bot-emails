@@ -123,4 +123,10 @@ def show_logs():
                                 current_time=datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8223, debug=False)
+    try:
+        print(f"Starting log viewer on http://0.0.0.0:8223")
+        app.run(host='0.0.0.0', port=8223, debug=False)
+    except Exception as e:
+        print(f"Error starting log viewer: {e}")
+        import traceback
+        traceback.print_exc()

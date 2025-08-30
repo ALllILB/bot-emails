@@ -20,6 +20,12 @@ sudo mkdir -p $INSTALL_DIR
 sudo cp -r * $INSTALL_DIR/
 sudo chown -R $SERVICE_USER:$SERVICE_USER $INSTALL_DIR
 
+# Copy .env.example to .env if not exists
+if [ ! -f $INSTALL_DIR/.env ]; then
+    sudo cp $INSTALL_DIR/.env.example $INSTALL_DIR/.env
+    sudo chown $SERVICE_USER:$SERVICE_USER $INSTALL_DIR/.env
+fi
+
 # Install Python dependencies
 sudo apt update
 sudo apt install -y python3 python3-pip python3-venv
@@ -89,7 +95,8 @@ sudo systemctl enable whatsapp-bot.service
 sudo systemctl enable log-viewer.service
 
 echo "Installation completed!"
-echo "Configure your .env file at: $INSTALL_DIR/.env"
-echo "Start services with: sudo systemctl start email-processor whatsapp-bot log-viewer"
-echo "Check status with: sudo systemctl status email-processor whatsapp-bot log-viewer"
-echo "View logs at: http://your-server-ip:8223"
+echo "IMPORTANT: Configure your credentials in: $INSTALL_DIR/.env"
+echo "Then start services with: sudo systemctl start log-viewer"
+echo "Check status with: sudo systemctl status log-viewer"
+echo "View logs at: http://$(hostname -I | awk '{print $1}'):8223"
+echo "After configuring .env, start other services: sudo systemctl start email-processor whatsapp-bot"
