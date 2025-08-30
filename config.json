@@ -1,0 +1,26 @@
+{
+  "ACCOUNTS": [
+    {
+      "name": "ایمیل اصلی ما",
+      "host": "mail.mahanholding.co",
+      "user": "info@mahanholding.co",
+      "pass": "s2FBx3SxLv9svsbrMwY8"
+    },
+    {
+      "name": "ایمیل ادمین",
+      "host": "mail.mahanholding.co",
+      "user": "admin@mahanholding.co",
+      "pass": "4DVhw4rDJjrY25kagsTk"
+    }
+  ],
+  "API_SETTINGS": {
+    "API_KEY": "iq2d8x7-ai8ihoa-q0jnekb-zhb017u-aq0kiar",
+    "TOKEN": "vSqHMvaHLnaxrVWo6WFoaKyf",
+    "SEND_MESSAGE_ENDPOINT": "https://api.whatsiplus.com/sendMsg/{API_KEY}"
+  },
+  "AUTHORIZED_USERS": [
+    "989397927843",
+    "989120000000",
+    "989350000000"
+  ]
+}
